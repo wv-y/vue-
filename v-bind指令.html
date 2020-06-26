@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue基础</title>
+
+    <style>
+        .active{
+            border: 1px solid red;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <img v-bind:src="imgSrc" alt="" />
+      <!--设置图片地址，可以简写为 :src=""-->
+      <br />
+      <img
+        :src="imgSrc"
+        :title="imgTitle+'可爱'"
+        :class="isActive?'active':''"
+        @click="changeActive"
+      /><!--三元表达式
+                对象的写法：class="{active:isActive}"-->
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          imgSrc: "./img/22.png",
+          imgTitle: "22",
+          isActive: false,
+        },
+        methods: {
+          changeActive() {
+            this.isActive = !this.isActive;
+          }
+        },
+      });
+    </script>
+  </body>
+  <!--v-bind设置元素的属性-->
+</html>

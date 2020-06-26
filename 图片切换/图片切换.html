@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图片切换</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h2>天依</h2>
+      <!-- 图片 -->
+      <button v-show="index>0" @click="imgPrev">上一张</button>
+      <button v-show="index!=imgSrc.length-1" @click="imgNext">
+        下一张
+      </button>
+      <br>
+      <img :src="imgSrc[index]" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          imgSrc: [
+            "./img/tianyi1.png",
+            "./img/tianyi2.png",
+            "./img/tianyi3.png",
+          ],
+          index: 0,
+        },
+        methods: {
+          imgPrev() {
+            if (this.index > 0) {
+              this.index--;
+            }
+          },
+          imgNext() {
+            this.index++;
+          },
+        },
+      });
+    </script>
+
+    <style>
+      img {
+        text-align: center;
+        width: 330px;
+        height: 550px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue基础</title>
+  </head>
+
+  <body>
+    <div id="app">
+        <button @click="add">添加</button>
+        <button v-on:click="remove">移除第一个</button>
+        <button v-on:click="move">移除最后一个</button>
+        <input type="text" @keyup.enter="doit(inputMes)" v-model="inputMes">自定义加入</button>
+        <button @click="set">清空</button>
+      <ul>
+        <li v-for="(item,index) in campus">
+          {{index+1}} {{ item }}
+        </li>
+      </ul>
+      <table>
+          <tr>
+              <td>name</td>
+              <td>number</td>
+          </tr>
+          <tr v-for="item in tables">
+              <td style="text-align:center">
+                 {{ item.name }}
+              </td>
+              <td style="text-align:center">
+                  {{ item.number }}
+              </td>
+          </tr>
+      </table>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+            inputMes: "",
+            message: "hello",
+            campus: ["中国", "甘肃", "兰州"], //数组类型
+            tables: [
+                { name: "张三", number: "1" },
+                { name: "lisi", number: "236" },
+                { name: "wangwu", number: "45" },
+            ],
+        },
+
+        methods:{
+            add(){
+                this.campus.push("lanzhou")
+            },
+            remove(){
+                this.campus.shift();    //删除最左边的
+            },
+            move(){
+                this.campus.pop();      //删除最后一个，最右边的
+            },
+            doit(mes){
+                this.campus.push(mes);
+            },
+            set(){
+                this.inputMes="";
+            }
+        }
+      });
+    </script>
+
+<style>
+
+table,table tr th, table tr td {
+      border:1px solid #175c7e;
+      padding: 5px 10px;
+}
+table {
+      min-height: 25px;
+      line-height: 25px;
+      text-align: center;
+      border-collapse: collapse;
+} 
+</style>
+
+  </body>
+</html>

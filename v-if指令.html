@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue基础</title>
+</head>
+
+<body >
+    <div id="app">
+        <button @click="change"> {{buttonValue}} </button>
+        <img @mouseenter="change" @mouseleave="change" v-if="message" src="./img/22.png">
+        <img @mouseenter="change" @mouseleave="change" v-if="message2" src="./img/222.png">
+       
+    </div>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              message: true,
+              message2: false,
+              age: 17,
+              buttonValue: "切换"
+          },
+          methods:{
+              change(){
+                this.message=!this.message;
+                this.message2=!this.message;
+                 
+
+              },
+              add(){
+                  this.age+=1;
+              }
+          }
+      })
+  </script>
+</body>
+<!--v-if指令根据表达式的真假,控制元素的显示或隐藏（操作dom元素）,隐藏时dom元素会移除，
+    而v-show只是切换为display-->
+</html>

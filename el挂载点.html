@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue基础</title>
+</head>
+
+<body >
+    {{ message }}<!-- el命中的元素内部才可以嵌套其他标签，-->
+  <div id="app" class="app">
+    {{ message }}
+    <span> {{message}}</span>
+  </div>
+
+  <div>
+      <p id="app2">
+        {{asd}}
+    </p>
+  </div>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app", //默认选择的是id选择器
+          //el:".app",    //class选择器
+          //el: "div",//标签选择器
+          //最好使用id选择器，其他选择器可能导致命中多个元素，
+          //使得语义不清晰
+          data:{
+              message: "123"
+          }
+      });
+      //html和body标签不能使用el挂载点，其他 的双标签都可以使用
+      //一个挂载点内部不能嵌套其他的挂载点
+      var app2 = new Vue({
+        el: "#app2",
+        data:{
+          asd:"234"
+        }
+      })
+  </script>
+</body>
+
+</html>

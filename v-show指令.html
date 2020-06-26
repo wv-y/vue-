@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue基础</title>
+</head>
+
+<body >
+    <div id="app">
+        <button @click="change"> {{buttonValue}} </button>
+        <img @mouseenter="change" @mouseleave="change" v-show="message" src="./img/22.png">
+        <img @mouseenter="change" @mouseleave="change" v-show="message2" src="./img/222.png">
+       <!-- <img v-show="age>=18" src="./img/22.png"> 
+        <button @click="add"> 加一 {{age}}</button> -->
+    </div>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              message: true,
+              message2: false,
+              age: 17,
+              buttonValue: "切换"
+          },
+          methods:{
+              change(){
+                  if(this.message==true){
+                      this.message=false;
+                      this.message2=!this.message;
+                  }else{
+                      this.message=true;
+                      this.message2=!this.message;
+                  }
+
+              },
+              add(){
+                  this.age+=1;
+              }
+          }
+      })
+  </script>
+</body>
+<!--v-show指令根据表达式的真假判断元素的显示或隐藏-->
+</html>

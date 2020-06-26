@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue基础</title>
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+
+  <body>
+   <div id="app" class="input-num">
+      <button @click="sub">-</button>
+      <span>{{ num }}</span>
+      <button @click="add">+</button>
+    </div>
+    <!--
+    <div id="app">
+      <input type="button" value="浪起来" @click="lang">
+      <input type="button" value="低调" @click="stop">
+
+      <h4 > {{ msg }} </h4>
+    </div>
+  -->
+    <div class="wrap">
+      <div class="cont">
+        
+        <p class="txt">1.文字如果超出了宽度自动向左滚动文字如果超出了宽度自动向左滚动。</p>
+               
+      </div>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data:{
+            num:1,
+            msg: '跑马灯效果，别浪~~~！',
+		      	intervalId: null  //在data上定义 定时器ID
+        },
+        methods: {
+            sub(){
+                if(this.num<=0)
+                    alert("到头了！");
+                else
+                    this.num -= 1;
+            },
+            add(){
+                if(this.num>=10)
+                    alert("到头了！");
+                else    
+                    this.num +=1;
+            },
+           /* lang(){
+				    // 获取到头的第一个字符
+			    	// this
+				    if(this.intervalId != null) return;
+			      	this.intervalId = setInterval( () => {
+					    var start = this.msg.substring(0,1)
+					    // 获取到 后面的所有字符
+				  	  var end = this.msg.substring(1)
+					    // 重新拼接到新的字符串，并赋值给 this.msg
+					    this.msg = end + start
+ 			    	} ,400)
+ 				    // 注意：VM实例，会监听自己身上 data 中所有数据的改变，只要数据一发生变化，就会自动把 最新的数据，从 data 上同步到页面中去；【好处：程序员指需要关心数据，不需要考虑如何重新渲染DOM页面】
+			    },  
+          stop(){	//停止定时器
+				clearInterval(this.intervalId)
+				// 每当清除了定时器之后，需要重新把 intervalId 置为 null
+				this.intervalId = null;
+			}*/
+
+      }
+      });
+    </script>
+  </body>
+
+</html>
+
+
